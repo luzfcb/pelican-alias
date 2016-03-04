@@ -37,6 +37,9 @@ class AliasGenerator(object):
         if filename == '':
             path = os.path.join(path, 'index.html')
 
+        if not '.html' in path:
+            path = '{}.html'.format(path)
+
         logger.info('[alias] Writing to alias file %s' % path)
         with open(path, 'w') as fd:
             fd.write(self.TEMPLATE.format(destination_path=page.url))
